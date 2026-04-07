@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import { supabase } from './lib/supabase'
+import { supabase, supabaseConfigError } from './lib/supabase'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
@@ -20,6 +20,11 @@ export default function App() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false)
+      return undefined
+    }
+
     const loadUser = async () => {
       const { data, error } = await supabase.auth.getUser()
 
@@ -40,6 +45,20 @@ export default function App() {
       listener.subscription.unsubscribe()
     }
   }, [])
+
+  if (supabaseConfigError) {
+    return (
+      <div className="screen-center">
+        <div className="card auth-card">
+          <h1>Configuracion incompleta</h1>
+          <p className="error">{supabaseConfigError}</p>
+          <p className="muted">
+            Corrige el archivo <code>.env</code> y reinicia la aplicacion.
+          </p>
+        </div>
+      </div>
+    )
+  }
 
   if (loading) {
     return (
