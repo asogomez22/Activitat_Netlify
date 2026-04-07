@@ -26,9 +26,7 @@ export default function Register() {
       return
     }
 
-    setMessage(
-      'Cuenta creada. Si tienes la confirmación por email activada en Supabase, revisa tu correo antes de iniciar sesión.'
-    )
+    setMessage('Cuenta creada correctamente.')
     setEmail('')
     setPassword('')
     setLoading(false)
@@ -38,7 +36,7 @@ export default function Register() {
     <div className="screen-center">
       <div className="card auth-card">
         <h1>Crear cuenta</h1>
-        <p className="muted">Regístrate para guardar tus tareas</p>
+        <p className="muted">Registrate para guardar tus tareas</p>
 
         <form onSubmit={handleSubmit} className="form">
           <div>
@@ -53,10 +51,10 @@ export default function Register() {
           </div>
 
           <div>
-            <label>Contraseña</label>
+            <label>Contrasena</label>
             <input
               type="password"
-              placeholder="Mínimo 6 caracteres"
+              placeholder="Minimo 6 caracteres"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               minLength="6"
@@ -73,7 +71,7 @@ export default function Register() {
         </form>
 
         <p className="switch-auth">
-          ¿Ya tienes cuenta? <Link to="/login">Inicia sesión</Link>
+          Ya tienes cuenta? <Link to="/login">Inicia sesion</Link>
         </p>
       </div>
     </div>
