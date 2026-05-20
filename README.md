@@ -1,4 +1,4 @@
-# Activitat Netlify - Gestor de tasques
+# actividaddwm - Gestor de tasques
 
 Aplicacio web desenvolupada per a l'AEA4. El projecte es desplega com a web estatica a Netlify i utilitza Supabase com a backend de tercers.
 

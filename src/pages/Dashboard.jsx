@@ -159,7 +159,7 @@ export default function Dashboard({ user }) {
     <div className="page">
       <header className="topbar">
         <div>
-          <h1>Mis tareas</h1>
+          <h1>actividaddwm</h1>
           <p className="muted">Sesión iniciada como {user.email}</p>
         </div>
 
