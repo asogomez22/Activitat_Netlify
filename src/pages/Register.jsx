@@ -26,7 +26,7 @@ export default function Register() {
       return
     }
 
-    setMessage('Cuenta creada correctamente.')
+    setMessage('Cuenta creada. Revisa tu correo para confirmar el registro antes de iniciar sesion.')
     setEmail('')
     setPassword('')
     setLoading(false)

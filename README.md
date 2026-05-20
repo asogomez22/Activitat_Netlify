@@ -85,6 +85,8 @@ npm run build
 
 ## Desplegament a Netlify
 
+URL de produccio: https://actividaddwm.netlify.app
+
 El repositori inclou `netlify.toml`:
 
 - Build command: `npm run build`
