@@ -10,14 +10,7 @@ export default function Dashboard({ user }) {
   const [saving, setSaving] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
 
-  useEffect(() => {
-    fetchTasks()
-  }, [])
-
-  const fetchTasks = async () => {
-    setLoading(true)
-    setErrorMsg('')
-
+  async function fetchTasks() {
     const { data, error } = await supabase
       .from('tasks')
       .select('*')
@@ -32,6 +25,34 @@ export default function Dashboard({ user }) {
     setTasks(data || [])
     setLoading(false)
   }
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadTasks = async () => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .order('created_at', { ascending: false })
+
+      if (!isMounted) return
+
+      if (error) {
+        setErrorMsg(error.message)
+        setLoading(false)
+        return
+      }
+
+      setTasks(data || [])
+      setLoading(false)
+    }
+
+    loadTasks()
+
+    return () => {
+      isMounted = false
+    }
+  }, [])
 
   const resetForm = () => {
     setTitle('')

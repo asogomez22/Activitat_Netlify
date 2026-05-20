@@ -17,11 +17,10 @@ function GuestRoute({ user, children }) {
 
 export default function App() {
   const [user, setUser] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(!supabaseConfigError)
 
   useEffect(() => {
     if (!supabase) {
-      setLoading(false)
       return undefined
     }
 
